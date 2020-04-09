@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpserviceService } from '../httpservice.service';
+import { CommonserviceService } from '../commonservice.service';
 
 @Component({
   selector: 'app-news',
@@ -7,15 +8,15 @@ import { HttpserviceService } from '../httpservice.service';
   styleUrls: ['./news.component.scss'],
 })
 export class NewsComponent implements OnInit {
-  resdata : any = [];
   newsList:any[]=[]
 
-  constructor(private httpservice: HttpserviceService) { }
+  constructor(private httpservice: HttpserviceService, private commonservice: CommonserviceService) { }
 
   ngOnInit() {
-
+    this.commonservice.loadingPresent();
     this.httpservice.getTrendData().subscribe(
       response => {
+        this.commonservice.loadingDismiss();
           this.newsList=response["articles"]
       }
     )
