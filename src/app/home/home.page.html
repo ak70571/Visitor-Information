@@ -1,0 +1,53 @@
+<ion-content  color="primary">
+  <form  #form="ngForm" (ngSubmit)="register(form)">
+    <ion-grid>
+      <ion-row color="primary" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+            <h3>Enter Registration Details</h3>
+          </div>
+          <div padding>
+            <ion-item>
+              <ion-input  name="name" type="text" placeholder="Name" [(ngModel)]="urname" required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="email" type="email" placeholder="your@email.com" [(ngModel)]="email" required></ion-input>
+            </ion-item>
+            <ion-item>
+          <ion-label>Type of visit </ion-label>
+          <ion-select [(ngModel)]="visit_typ" name="visiting type" value="type_of_visit " interface="action-sheet" >
+            <ion-select-option value="Meeting ">Meeting </ion-select-option>
+            <ion-select-option value="Delivery ">Delivery </ion-select-option>
+            <ion-select-option value="Personal">Personal</ion-select-option>
+          </ion-select>
+        </ion-item>
+            <ion-item>
+              <ion-input name="person_name" type="text" placeholder="Person to visit" [(ngModel)]="per_name" required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Start Date</ion-label>
+              <ion-datetime [value]="today" [min]="minDate" [max]="maxDate" placeholder="Select Date" required></ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label>Start Time</ion-label>
+                <ion-datetime display-format="H:mm" [(ngModel)]="starttime" name="starttime" picker-format="H:mm" required></ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label>End Time</ion-label>
+                <ion-datetime display-format="H:mm" [(ngModel)]="endtime" name="endtime" picker-format="H:mm" required></ion-datetime>
+            </ion-item>
+          </div>
+          <div padding>
+            <ion-button class="round" size="small" type="submit" [disabled]="form.invalid"  expand="block">Register</ion-button>
+          </div>
+          <div >
+            <ion-button class="round" size="small" routerLink="/users" expand="block">GetData</ion-button>
+          </div>
+        </ion-col>
+        <div padding>
+          <ion-button class="round" size="small" routerLink="/news" expand="block"  expand="block">Latest News</ion-button>
+        </div>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

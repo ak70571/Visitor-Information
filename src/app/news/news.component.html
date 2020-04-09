@@ -1,0 +1,30 @@
+    
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Latest News
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content inset="true">
+    <ion-list>
+      <ion-list-header color="tertiary">
+        <ion-label>Latest News</ion-label>
+      </ion-list-header>
+        <ion-item *ngFor="let x of newsList;let i=index">
+            <ion-avatar >
+              <img [src]="x.urlToImage">
+            </ion-avatar>
+            <ion-label>
+              <h3>{{x.source.id}}. {{x.source.name}}</h3>
+              <h4>{{x.author}}</h4>
+              <h4>{{x.title}}</h4>
+              <h4>{{x.description}}</h4>
+              <h4>{{x.url}}</h4>
+              <h4>{{x.publishedAt}}</h4>
+              <h4>{{x.content}}</h4>
+            </ion-label>
+          </ion-item>
+      </ion-list>
+</ion-content>
